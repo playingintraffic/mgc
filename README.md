@@ -2,7 +2,7 @@
 
 # [YouTube](https://www.youtube.com/watch?v=WYHuuy1pDM0)
 
-# PIT Minigames
+# MGC - Minigame Collection
 
 The minigame goat is back.  
 
@@ -11,7 +11,7 @@ Still running on 2,000+ servers and proving that simple design done right lasts 
 But time moves on and so did the tech, the visuals, and the standard I hold myself to.
 So I started fresh. Every game, reimagined from the ground up with modern UI, smoother flow, and that unmistakable PIT touch. 
 
-Welcome to Pit Minigames. 
+Welcome to MGC. 
 Twenty handcrafted skill challenges under one clean system.
 Every click, every beat, every "oh shit" moment fine-tuned to hit harder and feel better.
 For the devs who care about polish, and the players who can't stop chasing perfection.
@@ -45,7 +45,7 @@ Zero excuses for lazy design.
 ## Quick Start
 
 ```lua
-exports.pit_minigames:start_game({
+exports.mgc:start_game({
     game = 'signal_wave', -- or any of the other 20 games
     data = { difficulty = 3 } -- refer to docs for per game settings
 }, function(result)
@@ -71,8 +71,8 @@ No undocumented voodoo, no extra events, no mystery variables called `xD_please_
 
 ## Install
 
-1. Drop `pit_minigames` into your `resources/` folder.
-2. Add `ensure pit_minigames` to your `server.cfg`.
+1. Drop MGC into your `resources/` folder.
+2. Add `ensure minigames` to your `server.cfg`.
 3. Call the export whenever you want chaos.
 4. Watch your logs light up with success messages instead of Lua errors.
 
