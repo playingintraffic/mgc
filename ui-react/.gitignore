@@ -1,0 +1,27 @@
+# Dependencies
+node_modules
+package-lock.json
+
+# Build outputs
+dist
+../ui-dist
+
+# Development
+.DS_Store
+*.log
+*.local
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Environment
+.env
+.env.local
+.env.*.local

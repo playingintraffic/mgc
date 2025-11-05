@@ -3,7 +3,6 @@ import { GameContainer } from '@components/GameContainer';
 import { ResultScreen } from '@components/ResultScreen';
 import { BaseGameProps, ButtonMashData } from '@/types';
 import { useKeyPress } from '@hooks/useKeyPress';
-import { audioManager } from '@utils/audio';
 import '../styles/games/ButtonMash.css';
 
 export const ButtonMash: React.FC<BaseGameProps> = ({ data, onComplete }) => {
