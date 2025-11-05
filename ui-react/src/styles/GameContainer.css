@@ -1,0 +1,53 @@
+.minigame_container {
+  position: relative;
+  width: 50vw;
+  min-height: 40vh;
+  background: var(--background_main);
+  border: var(--border_accent);
+  border-radius: 1vh;
+  box-shadow: var(--shadow_large);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: var(--mono_font);
+}
+
+.minigame_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5vh 2vh;
+  background: var(--background_panel);
+  border-bottom: var(--border_light);
+}
+
+.minigame_title {
+  font-family: var(--header_font);
+  font-size: 2.5vh;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.2vh;
+  text-transform: uppercase;
+}
+
+.minigame_timer {
+  font-size: 2.5vh;
+  color: var(--text_secondary);
+  font-family: var(--mono_font);
+  font-weight: 700;
+  padding: 0.5vh 1.5vh;
+  background: var(--background_input);
+  border-radius: 0.5vh;
+  border: var(--border_light);
+  min-width: 8vh;
+  text-align: center;
+}
+
+.minigame_content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3vh;
+  position: relative;
+}
