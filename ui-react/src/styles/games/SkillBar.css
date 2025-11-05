@@ -1,0 +1,40 @@
+.skill_bar_container {
+  position: relative;
+  width: 80%;
+  height: 8vh;
+  background: var(--background_panel);
+  border: var(--border_light);
+  border-radius: 1vh;
+  overflow: hidden;
+}
+
+.skill_bar_icon {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 5vh;
+  color: var(--text_primary);
+  z-index: 2;
+  transition: left 0.05s linear;
+}
+
+.skill_bar_target_area {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  background: rgba(228, 173, 41, 0.3);
+  border-left: 2px solid var(--accent);
+  border-right: 2px solid var(--accent);
+  transition: left 0.05s linear;
+}
+
+.skill_bar_perfect_line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background: var(--error);
+  transform: translateX(-50%);
+}
