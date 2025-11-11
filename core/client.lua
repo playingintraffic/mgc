@@ -28,7 +28,7 @@ local function start_game(data, cb)
     SendNUIMessage({
         action = "start_minigame",
         game = data.game,
-        data = data or {}
+        data = data.data or {}
     })
 end
 

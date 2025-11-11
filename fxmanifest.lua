@@ -26,7 +26,7 @@ fx_version "cerulean"
 games { "gta5" }
 
 name "mgc"
-version "1.0.0"
+version "1.0.1"
 description "A standalone minigames collection."
 author "PlayingInTraffic"
 repository "https://github.com/playingintraffic/mgc"
