@@ -16,11 +16,13 @@ interface Wire {
 export const WireCut: React.FC<BaseGameProps> = ({ data, onComplete }) => {
   const gameData = data as WireCutData;
   const timerDuration = gameData.timer || 60000;
+  const maxChances = gameData.chances || 1;
 
   const [wires, setWires] = useState<Wire[]>([]);
   const [showResult, setShowResult] = useState(false);
   const [gameSuccess, setGameSuccess] = useState(false);
   const [hoveredWire, setHoveredWire] = useState<number | null>(null);
+  const [remainingChances, setRemainingChances] = useState(maxChances);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -85,28 +87,59 @@ export const WireCut: React.FC<BaseGameProps> = ({ data, onComplete }) => {
       );
 
       if (hoveredWire === idx) {
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.8)';
+        ctx.strokeStyle = '#e4ad29';
         ctx.lineWidth = 6;
-        ctx.shadowColor = 'rgba(255, 255, 255, 0.8)';
+        ctx.shadowColor = 'rgba(228, 173, 41, 0.9)';
         ctx.shadowBlur = 10;
       } else {
         ctx.strokeStyle = wire.color;
         ctx.lineWidth = 4;
-        ctx.shadowBlur = 0;
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.6)';
+        ctx.shadowBlur = 4;
       }
 
       ctx.stroke();
 
-      // Draw end circles
-      ctx.shadowBlur = 0;
+      // Draw end circles with gradient
+      const isHovered = hoveredWire === idx;
+      const radius = 8;
+
+      // Left circle
+      const leftGradient = ctx.createRadialGradient(
+        leftX,
+        wire.leftY,
+        radius * 0.1,
+        leftX,
+        wire.leftY,
+        radius
+      );
+      leftGradient.addColorStop(0, isHovered ? '#ffe8b0' : '#999');
+      leftGradient.addColorStop(0.5, isHovered ? '#e4ad29' : '#777');
+      leftGradient.addColorStop(1, isHovered ? '#a47414' : '#333');
+
+      ctx.shadowColor = isHovered ? 'rgba(228, 173, 41, 0.9)' : 'rgba(0,0,0,0.4)';
+      ctx.shadowBlur = isHovered ? 8 : 4;
       ctx.beginPath();
-      ctx.arc(leftX, wire.leftY, 5, 0, Math.PI * 2);
-      ctx.fillStyle = wire.color;
+      ctx.arc(leftX, wire.leftY, radius, 0, Math.PI * 2);
+      ctx.fillStyle = leftGradient;
       ctx.fill();
 
+      // Right circle
+      const rightGradient = ctx.createRadialGradient(
+        rightX,
+        wire.rightY,
+        radius * 0.1,
+        rightX,
+        wire.rightY,
+        radius
+      );
+      rightGradient.addColorStop(0, isHovered ? '#ffe8b0' : '#999');
+      rightGradient.addColorStop(0.5, isHovered ? '#e4ad29' : '#777');
+      rightGradient.addColorStop(1, isHovered ? '#a47414' : '#333');
+
       ctx.beginPath();
-      ctx.arc(rightX, wire.rightY, 5, 0, Math.PI * 2);
-      ctx.fillStyle = wire.color;
+      ctx.arc(rightX, wire.rightY, radius, 0, Math.PI * 2);
+      ctx.fillStyle = rightGradient;
       ctx.fill();
     });
   }, [wires, hoveredWire]);
@@ -120,23 +153,39 @@ export const WireCut: React.FC<BaseGameProps> = ({ data, onComplete }) => {
     const rect = canvas.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
+    const hitRadius = 10;
+    const leftX = 30;
+    const rightX = 270;
 
-    wires.forEach((wire, idx) => {
-      if (wire.isCut) return;
+    for (let idx = 0; idx < wires.length; idx++) {
+      const wire = wires[idx];
+      if (wire.isCut) continue;
 
-      const dist = Math.abs(y - wire.leftY);
-      if (dist < 10 && x > 30 && x < 270) {
+      const distLeft = Math.hypot(x - leftX, y - wire.leftY);
+      const distRight = Math.hypot(x - rightX, y - wire.rightY);
+
+      if (distLeft <= hitRadius || distRight <= hitRadius) {
+        setWires((prev) =>
+          prev.map((w, i) => (i === idx ? { ...w, isCut: true } : w))
+        );
+
         if (wire.isCorrect) {
           setGameSuccess(true);
           setShowResult(true);
           setTimeout(() => onComplete(true), 2000);
         } else {
-          setGameSuccess(false);
-          setShowResult(true);
-          setTimeout(() => onComplete(false), 2000);
+          const newChances = remainingChances - 1;
+          setRemainingChances(newChances);
+
+          if (newChances <= 0) {
+            setGameSuccess(false);
+            setShowResult(true);
+            setTimeout(() => onComplete(false), 2000);
+          }
         }
+        break;
       }
-    });
+    }
   };
 
   const handleCanvasMove = (e: React.MouseEvent<HTMLCanvasElement>) => {
@@ -144,16 +193,25 @@ export const WireCut: React.FC<BaseGameProps> = ({ data, onComplete }) => {
     if (!canvas) return;
 
     const rect = canvas.getBoundingClientRect();
+    const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
+    const hitRadius = 10;
+    const leftX = 30;
+    const rightX = 270;
 
     let found = -1;
-    wires.forEach((wire, idx) => {
-      if (wire.isCut) return;
-      const dist = Math.abs(y - wire.leftY);
-      if (dist < 15) {
+    for (let idx = 0; idx < wires.length; idx++) {
+      const wire = wires[idx];
+      if (wire.isCut) continue;
+
+      const distLeft = Math.hypot(x - leftX, y - wire.leftY);
+      const distRight = Math.hypot(x - rightX, y - wire.rightY);
+
+      if (distLeft <= hitRadius || distRight <= hitRadius) {
         found = idx;
+        break;
       }
-    });
+    }
 
     setHoveredWire(found);
   };

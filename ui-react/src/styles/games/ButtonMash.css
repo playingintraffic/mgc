@@ -1,31 +1,44 @@
 .button_mash_container {
+  position: relative;
+  width: 30vh;
+  height: 30vh;
+  margin: auto;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 3vh;
 }
 
 #button_mash_canvas {
-  width: 300px;
-  height: 300px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 .button_mash_info {
-  font-family: var(--header_font);
-  font-size: 3vh;
-  color: var(--text_secondary);
-  letter-spacing: 0.3vh;
+  position: absolute;
+  top: 29.5%;
+  font-size: 1.5rem;
+  font-family: var(--text_font);
+  color: var(--text_primary);
+  font-weight: bold;
+  user-select: none;
+  text-shadow: var(--text_shadow_hard);
 }
 
 .current_key_display {
-  font-size: 8vh;
-  font-weight: 700;
-  color: var(--accent);
-  font-family: var(--header_font);
-  padding: 2vh 4vh;
-  background: var(--background_panel);
+  position: absolute;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--text_primary);
+  border-radius: var(--border_radius_outer);
+  background: radial-gradient(circle, var(--background_main) 40%, var(--background_panel) 100%);
+  height: 5vh;
+  width: 2.75vw;
+  padding: 0.5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: var(--border_accent);
-  border-radius: 1vh;
-  min-width: 12vh;
-  text-align: center;
+  box-shadow: var(--shadow_medium);
+  font-family: var(--text_font);
 }
