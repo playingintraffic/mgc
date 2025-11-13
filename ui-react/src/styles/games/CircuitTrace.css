@@ -1,1 +1,22 @@
 @import './common.css';
+
+.trace_canvas_wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+#trace_canvas {
+  border-radius: 8px;
+  background: var(--background_panel);
+  cursor: crosshair;
+}
+
+.trace_status {
+  margin-top: 15px;
+  font-size: 1rem;
+  opacity: 0.8;
+}

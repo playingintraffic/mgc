@@ -1,1 +1,25 @@
 @import './common.css';
+
+.minigame_container.code_drop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: fit-content;
+  width: fit-content;
+  font-family: "VT323", monospace;
+  color: #fff;
+}
+
+#code_drop_canvas {
+  width: 92.5%;
+  margin: 1vh;
+  background: var(--background_overlay);
+  border: var(--border_dashed);
+  border-radius: var(--border_radius_outer);
+  box-shadow: var(--inset_shadow_small);
+}
+
+.minigame_container.code_drop .minigame_instructions {
+  margin: 1vh;
+}

@@ -1,1 +1,45 @@
 @import './common.css';
+
+.minigame_container.frequency_jam {
+  height: fit-content;
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.frequency_jam_canvas_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#frequency_jam_canvas {
+  display: block;
+  height: auto;
+  width: auto;
+}
+
+.frequency_jam_submit_wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1vh;
+}
+
+#frequency_jam_submit {
+  padding: 0.5vh 1vh;
+  font-size: 1.5rem;
+  background-color: var(--accent);
+  color: white;
+  border: var(--border_dark);
+  border-radius: var(--border_radius_inner);
+  box-shadow: var(--inset_shadow_small);
+  cursor: pointer;
+  font-family: "VT323", monospace;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+#frequency_jam_submit:hover {
+  opacity: 1.0;
+}

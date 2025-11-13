@@ -1,1 +1,45 @@
 @import './common.css';
+
+.minigame_container.signal_wave {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: fit-content;
+  width: fit-content;
+  font-family: 'VT323', monospace;
+  color: #fff;
+}
+
+#signal_wave_canvas {
+  width: 92.5%;
+  padding: 1vh;
+  margin-top: 1vh;
+  background: var(--background_overlay);
+  border: var(--border_dashed);
+}
+
+.signal_wave_dial_wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+#signal_submit {
+  padding: 0.5vh 1vh;
+  font-size: 1.5rem;
+  background-color: var(--accent);
+  color: white;
+  border: var(--border_dark);
+  border-radius: var(--border_radius_inner);
+  box-shadow: var(--inset_shadow_small);
+  cursor: pointer;
+  font-family: "VT323", monospace;
+  text-transform: uppercase;
+  margin: 1vh;
+  opacity: 0.9;
+}
+
+#signal_submit:hover {
+  opacity: 1.0;
+}

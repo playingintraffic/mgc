@@ -1,1 +1,56 @@
 @import './common.css';
+
+.minigame_container.whack_flash {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: fit-content;
+  width: fit-content;
+  font-family: 'VT323', monospace;
+  color: #fff;
+}
+
+.whack_grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  padding: 1vh;
+}
+
+.whack_row {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.whack_circle {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--text_primary);
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--background_main) 40%, var(--background_panel) 100%);
+  height: 7vh;
+  width: 7vh;
+  padding: 0.5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--border_accent);
+  box-shadow: var(--shadow_medium);
+  font-family: var(--text_font);
+}
+
+.whack_circle.active {
+  background: #e4ad29;
+}
+
+.whack_circle.success {
+  background: #4caf50 !important;
+}
+
+.whack_circle.fail {
+  background: #f44336 !important;
+}

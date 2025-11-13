@@ -1,1 +1,36 @@
 @import './common.css';
+
+.minigame_container.pulse_sync {
+  height: fit-content;
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pulse_sync_canvas_wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2vh;
+}
+
+.pulse_sync_button {
+  padding: 0.5vh 1vh;
+  font-size: 1.5rem;
+  background-color: var(--accent);
+  color: white;
+  border: var(--border_dark);
+  border-radius: var(--border_radius_inner);
+  box-shadow: var(--inset_shadow_small);
+  cursor: pointer;
+  font-family: "VT323", monospace;
+  text-transform: uppercase;
+  opacity: 0.9;
+  margin-bottom: 2vh;
+}
+
+.pulse_sync_button:hover {
+  opacity: 1.0;
+}

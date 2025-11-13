@@ -1,1 +1,6 @@
 @import './common.css';
+
+.minigame_container.packet_snatch {
+  height: fit-content;
+  width: fit-content;
+}
