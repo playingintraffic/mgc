@@ -1,1 +1,86 @@
 @import './common.css';
+
+.minigame_container.bit_flip {
+  height: fit-content;
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bit_flip_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1vh;
+  width: 100%;
+  user-select: none;
+}
+
+.bit_flip_toolbar {
+  width: 100%;
+  padding: 0.5vh;
+  background-color: var(--background_overlay);
+  font-size: 1.2rem;
+  border-bottom: var(--border_dashed);
+  display: flex;
+  justify-content: space-between;
+}
+
+.bit_flip_bits {
+  display: flex;
+  gap: 1vh;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 1vh;
+}
+
+.bit_flip_bit {
+  width: 4vh;
+  height: 4vh;
+  font-size: 2.4vh;
+  font-weight: bold;
+  font-family: 'VT323', monospace;
+  color: var(--text_primary);
+  border-radius: var(--border_radius_outer);
+  background: radial-gradient(circle, var(--background_main) 40%, var(--background_panel) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: var(--border_accent);
+  box-shadow: var(--shadow_medium);
+  font-family: var(--text_font);
+  transition: background 0.2s, transform 0.1s;
+}
+
+.bit_flip_bit.correct {
+  background: var(--accent);
+}
+
+.bit_flip_row_label {
+  font-size: 1.5rem;
+  color: var(--text_secondary);
+  margin-top: 0.5vh;
+}
+
+.bit_flip_timer {
+  font-size: 1.3rem;
+  color: var(--text_primary);
+  margin: 0.5vh;
+}
+
+.bit_flip_result_screen {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: white;
+  text-shadow: var(--text_shadow_hard);
+}

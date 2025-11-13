@@ -1,1 +1,72 @@
 @import './common.css';
+
+.chip_hack_loading {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.chip_hack_loading_icons span {
+  font-size: 4rem;
+  margin: 12px;
+  opacity: 0.5;
+  color: var(--text_secondary);
+}
+
+.chip_hack_loading_icons span.line_complete i {
+  opacity: 1;
+  color: var(--text_primary);
+}
+
+.chip_hack_loading_text {
+  margin-top: 2vh;
+  font-size: 1.5rem;
+  color: var(--text_secondary);
+}
+
+.chip_hack_game {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.chip_hack_toolbar {
+  padding: 1vh;
+  background-color: var(--background_overlay);
+  font-size: 1.2rem;
+  border-bottom: var(--border_dashed);
+  display: flex;
+  justify-content: space-between;
+}
+
+.chip_hack_play_area {
+  flex: 1;
+  position: relative;
+  background-color: var(--background_main);
+  overflow: hidden;
+}
+
+.chip_hack_light {
+  position: absolute;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 80%);
+  pointer-events: none;
+}
+
+.chip {
+  position: absolute;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  cursor: pointer;
+}
+
+.chip_hack_result {
+  font-size: 4rem;
+  text-align: center;
+  margin: auto;
+  text-transform: uppercase;
+}

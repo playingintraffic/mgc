@@ -1,1 +1,26 @@
 @import './common.css';
+
+.minigame_container.data_shift {
+  height: 40vh;
+  max-width: 36vh;
+}
+
+.data_shift_timer {
+  font-size: 1.2rem;
+  margin-bottom: 1vh;
+  color: var(--text_secondary);
+}
+
+.data_shift_result_screen {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: white;
+  text-shadow: var(--text_shadow_hard);
+}
